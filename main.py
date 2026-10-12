@@ -48,13 +48,12 @@ def check_variant_surnames(emp_dict):
     if not found:
         print("Жодного із зазначених співробітників не знайдено")
 
-
 def search_by_address_fragment(emp_dict):
     fragment = input("Введіть фрагмент адреси для пошуку: ")
     found = False
     print("Результат пошуку за фрагментом адреси: ")
     for k, v in emp_dict.items():
-        # Переводим в нижний регистр для независимости от регистра при поиске
+        #Переводимо в нижній регістр для незалежності від регістру під час пошуку
         if fragment.lower() in v.lower():
             print(f"Співробітник: {k} - Адреса: {v}")
             found = True
