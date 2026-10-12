@@ -48,6 +48,20 @@ def check_variant_surnames(emp_dict):
     if not found:
         print("Жодного із зазначених співробітників не знайдено")
 
+
+def search_by_address_fragment(emp_dict):
+    fragment = input("Введіть фрагмент адреси для пошуку: ")
+    found = False
+    print("Результат пошуку за фрагментом адреси: ")
+    for k, v in emp_dict.items():
+        # Переводим в нижний регистр для независимости от регистра при поиске
+        if fragment.lower() in v.lower():
+            print(f"Співробітник: {k} - Адреса: {v}")
+            found = True
+
+    if not found:
+        print("Співробітників за вказаним фрагментом адреси не знайдено")
+
 def main():
     while True:
         print("_" * 50)
@@ -57,6 +71,7 @@ def main():
         print(" 3 - Видалити запис")
         print(" 4 - Переглянути словник за відсортованими ключами")
         print(" 5 - Пошук співробітників")
+        print(" 6 - Пошук співробітника за фрагментом адреси") # Додано новий пункт
         print(" 0 - Вийти з програми")
         choice = input("Введіть пункт меню: ")
 
@@ -72,15 +87,17 @@ def main():
             print_sorted(employees)
         elif choice == '5':
             check_variant_surnames(employees)
+        elif choice == '6':
+            search_by_address_fragment(employees) # Додано виклик нової функції
         elif choice == '0':
             print("Роботу завершено")
             break
         else:
-            print("Невірне значення, оберіть цифру від 0 до 5")
+            # Оновлено текст помилки (від 0 до 6)
+            print("Невірне значення, оберіть цифру від 0 до 6")
 
         print("-" * 50)
         input("Натисніть Enter, щоб повернутися до меню")
-
 
 if __name__ == "__main__":
     main()
